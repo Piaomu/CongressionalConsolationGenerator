@@ -13,6 +13,7 @@ namespace CongressionalConsolationGenerator.Models
         public string? Location { get; set; }
         public string? State { get; set; }
         public DateTime Date { get; set; }
+        public Year Year { get; set; }
         public Subject Sentence2Subject { get; set; }
         public ThoughtPrayer ThoughtsAndPrayers { get; set; }
         public SentenceObject Sentence2Object { get; set; }
@@ -51,6 +52,30 @@ namespace CongressionalConsolationGenerator.Models
         LossOfLife,
         [Display(Name = "shooting")]
         Shooting
+    }
+
+    public enum Year
+    {
+        [Display(Name = "2013")]
+        Thirteen = 2013,
+        [Display(Name = "2014")]
+        Fourteen = 2014,
+        [Display(Name = "2015")]
+        Fifteen = 2015,
+        [Display(Name = "2016")]
+        Sixteen = 2016,
+        [Display(Name = "2017")]
+        Seventeen = 2017,
+        [Display(Name = "2018")]
+        Eighteen = 2018,
+        [Display(Name = "2019")]
+        Nineteen = 2019,
+        [Display(Name = "2020")]
+        Twenty = 2020,
+        [Display(Name = "2021")]
+        TwentyOne = 2021,
+        [Display(Name = "2022")]
+        TwentyTwo = 2022
     }
 
     public enum ThoughtPrayer
