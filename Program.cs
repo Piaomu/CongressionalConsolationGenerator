@@ -1,4 +1,6 @@
+using AutoMapper;
 using CongressionalConsolationGenerator.Data;
+using CongressionalConsolationGenerator.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMvc();
+
+builder.Services.AddScoped<ICondolenceService, CondolenceService>();
+builder.Services.AddScoped<IMapper, Mapper>();
 
 var app = builder.Build();
 
