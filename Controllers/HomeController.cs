@@ -15,8 +15,13 @@ namespace CongressionalConsolationGenerator.Controllers
             _condolenceService = condolenceService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(CondolenceInput? input)
         {
+            if (input is not null)
+            {
+                return View(input);
+            }
+
             return View();
         }
 
@@ -24,8 +29,8 @@ namespace CongressionalConsolationGenerator.Controllers
         {
             return View();
         }
-
-        private async Task<IActionResult> GenerateCondolenceAsync(bool isRandom, CondolenceInput input)
+        
+        public async Task<IActionResult> GenerateCondolenceAsync(bool isRandom, CondolenceInput input)
         {
             if (isRandom)
             {
@@ -36,6 +41,20 @@ namespace CongressionalConsolationGenerator.Controllers
             Condolence userCondolence = await _condolenceService.GenerateCalculatedCondolence(input);
 
             return View(userCondolence);
+        }
+
+
+        public async Task<IActionResult> RandomCondolence()
+        {
+            if (ModelState.IsValid)
+            {
+                Condolence randomCondolence = await _condolenceService.GenerateRandomCondolence();
+                return View(randomCondolence);
+
+            }
+
+            return RedirectToAction("Index");
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
