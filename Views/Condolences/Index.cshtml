@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CongressionalConsolationGenerator.Models.Condolence>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SentenceSubject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verb2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDoubleVerb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tragedy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sentence2Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoughtsAndPrayers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sentence2Object)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponderAdjective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heroes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentenceSubject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verb2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDoubleVerb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tragedy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sentence2Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoughtsAndPrayers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sentence2Object)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponderAdjective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heroes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

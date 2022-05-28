@@ -1,0 +1,99 @@
+﻿@model CongressionalConsolationGenerator.Models.Condolence
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Condolence</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="SentenceSubject" class="control-label"></label>
+                <select asp-for="SentenceSubject" class="form-control"></select>
+                <span asp-validation-for="SentenceSubject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verb" class="control-label"></label>
+                <select asp-for="Verb" class="form-control"></select>
+                <span asp-validation-for="Verb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verb2" class="control-label"></label>
+                <input asp-for="Verb2" class="form-control" />
+                <span asp-validation-for="Verb2" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDoubleVerb" /> @Html.DisplayNameFor(model => model.IsDoubleVerb)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tragedy" class="control-label"></label>
+                <select asp-for="Tragedy" class="form-control"></select>
+                <span asp-validation-for="Tragedy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <select asp-for="Year" class="form-control"></select>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sentence2Subject" class="control-label"></label>
+                <select asp-for="Sentence2Subject" class="form-control"></select>
+                <span asp-validation-for="Sentence2Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoughtsAndPrayers" class="control-label"></label>
+                <select asp-for="ThoughtsAndPrayers" class="form-control"></select>
+                <span asp-validation-for="ThoughtsAndPrayers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sentence2Object" class="control-label"></label>
+                <select asp-for="Sentence2Object" class="form-control"></select>
+                <span asp-validation-for="Sentence2Object" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResponderAdjective" class="control-label"></label>
+                <select asp-for="ResponderAdjective" class="form-control"></select>
+                <span asp-validation-for="ResponderAdjective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Heroes" class="control-label"></label>
+                <select asp-for="Heroes" class="form-control"></select>
+                <span asp-validation-for="Heroes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
