@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CongressionalConsolationGenerator.Models;
 
 namespace CongressionalConsolationGenerator.Data
 {
@@ -9,5 +10,6 @@ namespace CongressionalConsolationGenerator.Data
             : base(options)
         {
         }
+        public DbSet<CongressionalConsolationGenerator.Models.Condolence>? Condolence { get; set; }
     }
 }
