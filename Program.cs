@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();
 
 builder.Services.AddScoped<ICondolenceService, CondolenceService>();
-builder.Services.AddScoped<IMapper, Mapper>();
+
 
 var app = builder.Build();
 
