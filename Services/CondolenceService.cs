@@ -103,42 +103,43 @@ namespace CongressionalConsolationGenerator.Services
             return year;
         }
 
-        private EventDetails GetEventDetailsAsync(Year year)
+        private ShootingDataRoot GetShootingDataRoot(Year year)
         {
             string fileName;
 
-            if(year == Year.Thirteen)
+            if (year == Year.Thirteen)
             {
                 fileName = "2013-data.json";
             }
-            else if(year == Year.Fourteen)
+            else if (year == Year.Fourteen)
             {
                 fileName = "2014-data.json";
             }
-            else if(year == Year.Fifteen)
+            else if (year == Year.Fifteen)
             {
                 fileName = "2015-data.json";
             }
-            else if(year == Year.Sixteen)
+            else if (year == Year.Sixteen)
             {
                 fileName = "2016-data.json";
             }
-            else if(year == Year.Seventeen){
+            else if (year == Year.Seventeen)
+            {
                 fileName = "2017-data.json";
             }
-            else if(year == Year.Eighteen)
+            else if (year == Year.Eighteen)
             {
                 fileName = "2018-data.json";
             }
-            else if(year == Year.Nineteen)
+            else if (year == Year.Nineteen)
             {
                 fileName = "2019-data.json";
             }
-            else if(year == Year.Twenty)
+            else if (year == Year.Twenty)
             {
                 fileName = "2020-data.json";
             }
-            else if(year == Year.TwentyOne)
+            else if (year == Year.TwentyOne)
             {
                 fileName = "2021-data.json";
             }
@@ -151,16 +152,32 @@ namespace CongressionalConsolationGenerator.Services
 
             string fullPath = $"{path}{fileName}";
 
+            if(fullPath is null)
+            {
+                throw new Exception("Path returned no value");
+            }
+
             using (StreamReader openStream = File.OpenText(fullPath))
             {
                 JsonSerializer serializer = new JsonSerializer();
 
                 ShootingDataRoot shootingDataRoot = (ShootingDataRoot)serializer.Deserialize(openStream, typeof(ShootingDataRoot));
+
+                if(shootingDataRoot is null)
+                {
+                    throw new Exception("No data present");
+                }
+
+                return shootingDataRoot;
             };
 
+        }
+        private EventDetails GetEventDetailsAsync(Year year)
+        {
+            var shootingDataByYear = GetShootingDataRoot(year);
+
             EventDetails details = new();
-
-
+            //ToDo: Finish method
 
             return details;
         }
