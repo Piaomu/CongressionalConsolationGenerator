@@ -1,4 +1,5 @@
 ﻿using CongressionalConsolationGenerator.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CongressionalConsolationGenerator.Services
 {
@@ -14,6 +15,8 @@ namespace CongressionalConsolationGenerator.Services
             Condolence condolence = new()
             {
                 SentenceSubject = GetRandomSubject(),
+                Verb = GetRandomVerb(),
+
             };
 
             return condolence;
@@ -31,6 +34,15 @@ namespace CongressionalConsolationGenerator.Services
             Subject subject = (Subject)values.GetValue(random.Next(values.Length));
 
             return subject;
+        }
+
+        private Verb GetRandomVerb()
+        {
+            Array values = Enum.GetValues(typeof(Verb));
+            Random random = new Random();
+            Verb verb = (Verb)values.GetValue(random.Next(values.Length));
+
+            return verb;
         }
     }
 }

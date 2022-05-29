@@ -1,12 +1,14 @@
-﻿@model CongressionalConsolationGenerator.Models.Condolence
+﻿@using System.ComponentModel.DataAnnotations
+@model CongressionalConsolationGenerator.Models.Condolence
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
+    var subject = Model.SentenceSubject.GetAttribute<DisplayAttribute>();
+    var verb = Model.Verb.GetAttribute<DisplayAttribute>();
 }
 
-<p>@Model.SentenceSubject @if (Model.SentenceSubject == Subject.I)
+<p>@subject.Name @if (Model.SentenceSubject == Subject.I)
     {
         <p>am</p>
     }
@@ -15,5 +17,5 @@
         <p>are</p>
     }
 </p>
-<p>@Model.Verb</p>
+<p>@verb.Name</p>
 
