@@ -5,7 +5,10 @@
 *@
 @{
     var subject = Model.SentenceSubject.GetAttribute<DisplayAttribute>();
-    var verb = Model.Verb.GetAttribute<DisplayAttribute>();
+    var verb = Model.Verb1.GetAttribute<DisplayAttribute>();
+    var isDoubleVerb = Model.IsDoubleVerb;
+    var verb2 = Model.Verb2.GetAttribute<DisplayAttribute>();
+    var tragedy = Model.Tragedy.GetAttribute<DisplayAttribute>();
 }
 
 <p>@subject.Name @if (Model.SentenceSubject == Subject.I)
@@ -17,5 +20,8 @@
         <p>are</p>
     }
 </p>
-<p>@verb.Name</p>
+<p>@verb.Name </p>@if (isDoubleVerb == true)
+{    <p>and @verb2.Name </p>
+}
+<p>at the @tragedy.Name</p> 
 

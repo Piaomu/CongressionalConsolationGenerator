@@ -12,10 +12,17 @@ namespace CongressionalConsolationGenerator.Services
 
         public async Task<Condolence> GenerateRandomCondolence()
         {
+            var verb1 = GetRandomVerb();
+
             Condolence condolence = new()
             {
                 SentenceSubject = GetRandomSubject(),
-                Verb = GetRandomVerb(),
+                Verb1 = verb1,
+                IsDoubleVerb = FlipCoin(),
+                Verb2 = GetSecondVerb(verb1),
+                Tragedy = GetRandomTragedy()
+                
+
 
             };
 
@@ -44,5 +51,41 @@ namespace CongressionalConsolationGenerator.Services
 
             return verb;
         }
+
+        private Verb GetSecondVerb(Verb verb1)
+        {
+            Verb secondVerb = GetRandomVerb();
+
+            while (secondVerb == verb1)
+            {
+              secondVerb = GetRandomVerb();
+            }
+
+            return secondVerb;
+        }
+
+        private bool FlipCoin()
+        {
+            Random random = new Random();
+            bool coin = false;
+
+            int flip = random.Next();
+
+            if(flip % 2 == 0)
+            {
+                coin = true;
+            }
+            return coin;
+        }
+
+        private Tragedy GetRandomTragedy()
+        {
+            Array values = Enum.GetValues(typeof(Tragedy));
+            Random random = new Random();
+            Tragedy tragedy = (Tragedy)values.GetValue(random.Next(values.Length));
+
+            return tragedy;
+        }
+
     }
 }

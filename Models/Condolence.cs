@@ -7,7 +7,7 @@ namespace CongressionalConsolationGenerator.Models
     {
         public string Id { get; set; }
         public Subject SentenceSubject { get; set; }
-        public Verb Verb { get; set; }
+        public Verb Verb1 { get; set; }
         public Verb? Verb2 { get; set; }
         public bool IsDoubleVerb { get; set; } = false;
         public Tragedy Tragedy { get; set; }
