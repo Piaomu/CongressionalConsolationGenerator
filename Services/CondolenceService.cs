@@ -14,7 +14,7 @@ namespace CongressionalConsolationGenerator.Services
         public async Task<Condolence> GenerateRandomCondolence()
         {
             var verb1 = GetRandomVerb();
-            var year = GetYear();
+            var year = GetRandomYear();
             var TragicEvent = GetEventDetailsAsync(year);
 
             Condolence condolence = new()
@@ -95,7 +95,7 @@ namespace CongressionalConsolationGenerator.Services
             return tragedy;
         }
 
-        private Year GetYear()
+        private Year GetRandomYear()
         {
             Array values = Enum.GetValues(typeof(Tragedy));
             Random random = new Random();
