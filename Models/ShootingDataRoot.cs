@@ -2,6 +2,6 @@
 {
     public class ShootingDataRoot
     {
-        List<ShootingData>? ShootingData;
+        public List<ShootingData>? ShootingData;
     }
 }

@@ -27,7 +27,8 @@ namespace CongressionalConsolationGenerator.Services
                 Year = year,
                 Location = TragicEvent.Location,
                 State = TragicEvent.State,
-                Date = TragicEvent.Date
+                Date = TragicEvent.Date,
+                
 
                 
 
@@ -176,11 +177,28 @@ namespace CongressionalConsolationGenerator.Services
         {
             var shootingDataByYear = GetShootingDataRoot(year);
 
-            EventDetails details = new();
-            //ToDo: Finish method
+            ShootingData shootingEvent = GetEvent(shootingDataByYear);
+
+            EventDetails details = new()
+            {
+                Date = shootingEvent.Date,
+                Location = shootingEvent.City,
+                State = shootingEvent.State,
+                Year = year,
+            };
 
             return details;
         }
 
+        private ShootingData GetEvent(ShootingDataRoot shootingDataByYear)
+        {
+            List<ShootingData> shootingData = shootingDataByYear.ShootingData;
+            Random random = new Random();
+            var randomIndex = random.Next(0, shootingData.Count);
+
+            var shootingEvent = shootingData[randomIndex];
+
+            return shootingEvent;
+        }
     }
 }
