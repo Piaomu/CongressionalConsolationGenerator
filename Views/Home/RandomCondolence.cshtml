@@ -9,6 +9,10 @@
     var isDoubleVerb = Model.IsDoubleVerb;
     var verb2 = Model.Verb2.GetAttribute<DisplayAttribute>();
     var tragedy = Model.Tragedy.GetAttribute<DisplayAttribute>();
+    var year = Model.Year.GetAttribute<DisplayAttribute>();
+    var location = Model.Location;
+    var state = Model.State;
+    var date = Model.Date;
 }
 
 <p>@subject.Name @if (Model.SentenceSubject == Subject.I)
@@ -24,5 +28,5 @@
 {
     <p>and @verb2.Name </p>
 }
-<p>at the @tragedy.Name</p> 
+<p>at the @tragedy.Name tragedy </p>
 
