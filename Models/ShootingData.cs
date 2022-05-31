@@ -2,6 +2,7 @@
 
 namespace CongressionalConsolationGenerator.Models
 {
+    [JsonObject]
     public class ShootingData
     {
         [JsonProperty("date")]

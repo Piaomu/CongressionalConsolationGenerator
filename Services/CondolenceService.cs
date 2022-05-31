@@ -1,5 +1,6 @@
 ﻿using CongressionalConsolationGenerator.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace CongressionalConsolationGenerator.Services
@@ -104,7 +105,7 @@ namespace CongressionalConsolationGenerator.Services
             return year;
         }
 
-        private ShootingDataRoot GetShootingDataRoot(Year year)
+        private List<ShootingData> GetShootingDataByYear(Year year)
         {
             string fileName;
 
@@ -160,22 +161,19 @@ namespace CongressionalConsolationGenerator.Services
 
             using (StreamReader openStream = File.OpenText(fullPath))
             {
-                JsonSerializer serializer = new JsonSerializer();
+                string jsonString = openStream.ReadToEnd();
+                var jsonArray = JArray.Parse(jsonString);
 
-                ShootingDataRoot shootingDataRoot = (ShootingDataRoot)serializer.Deserialize(openStream, typeof(ShootingDataRoot));
+                List<ShootingData> shootingDataList = jsonArray.ToObject<List<ShootingData>>();
 
-                if(shootingDataRoot is null)
-                {
-                    throw new Exception("No data present");
-                }
 
-                return shootingDataRoot;
+                return shootingDataList;
             };
 
         }
         private EventDetails GetEventDetailsAsync(Year year)
         {
-            var shootingDataByYear = GetShootingDataRoot(year);
+            var shootingDataByYear = GetShootingDataByYear(year);
 
             ShootingData shootingEvent = GetEvent(shootingDataByYear);
 
@@ -190,13 +188,12 @@ namespace CongressionalConsolationGenerator.Services
             return details;
         }
 
-        private ShootingData GetEvent(ShootingDataRoot shootingDataByYear)
+        private ShootingData GetEvent(List<ShootingData> shootingDataByYear)
         {
-            List<ShootingData> shootingData = shootingDataByYear.ShootingData;
             Random random = new Random();
-            var randomIndex = random.Next(0, shootingData.Count);
+            var randomIndex = random.Next(0, shootingDataByYear.Count);
 
-            var shootingEvent = shootingData[randomIndex];
+            var shootingEvent = shootingDataByYear[randomIndex];
 
             return shootingEvent;
         }
