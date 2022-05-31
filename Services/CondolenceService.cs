@@ -98,7 +98,7 @@ namespace CongressionalConsolationGenerator.Services
 
         private Year GetRandomYear()
         {
-            Array values = Enum.GetValues(typeof(Tragedy));
+            Array values = Enum.GetValues(typeof(Year));
             Random random = new Random();
             Year year = (Year)values.GetValue(random.Next(values.Length));
 
@@ -182,7 +182,7 @@ namespace CongressionalConsolationGenerator.Services
                 Date = shootingEvent.Date,
                 Location = shootingEvent.City,
                 State = shootingEvent.State,
-                Year = year,
+                Year = year
             };
 
             return details;
