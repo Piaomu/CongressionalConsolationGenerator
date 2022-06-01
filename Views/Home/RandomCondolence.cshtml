@@ -13,20 +13,13 @@
     var location = Model.Location;
     var state = Model.State;
     var date = Model.Date;
+    var thoughtPrayer = Model.ThoughtsAndPrayers.GetAttribute<DisplayAttribute>();
+    var sentence2Object = Model.Sentence2Object.GetAttribute<DisplayAttribute>();
+    var adjective = Model.ResponderAdjective.GetAttribute<DisplayAttribute>();
+    var heroes = Model.Heroes.GetAttribute<DisplayAttribute>();
 }
 
-<p>@subject.Name @if (Model.SentenceSubject == Subject.I)
-    {
-        <p>am</p>
-    }
-    else
-    {
-        <p>are</p>
-    }
-</p>
-<p>@verb.Name </p>@if (isDoubleVerb == true)
-{
-    <p>and @verb2.Name </p>
-}
-<p>at the @tragedy.Name tragedy </p>
+<p>@subject.Name @if (Model.SentenceSubject == Subject.I) {<p>am</p>} else {<p>are</p>}</p> <p>@verb.Name </p>@if (isDoubleVerb == true) {<p>and @verb2.Name </p>}
+<p>at the @tragedy.Name in @location, @state on @date.ToLongDateString() . @subject.Name @if (Model.SentenceSubject == Subject.I) {<p>am</p>} else {<p>are</p>} @thoughtPrayer.Name the @sentence2Object.Name and thank the </p> 
+<p>@adjective.Name of @heroes.Name .</p>
 

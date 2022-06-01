@@ -29,16 +29,16 @@ namespace CongressionalConsolationGenerator.Services
                 Location = TragicEvent.Location,
                 State = TragicEvent.State,
                 Date = TragicEvent.Date,
-                
-
-                
-
+                ThoughtsAndPrayers = GetRandomThoughtPrayer(),
+                Sentence2Object = GetRandomSentenceObject(),
+                ResponderAdjective = GetRandomAdjective(),
+                Heroes = GetRandomHeroes(),
+                Signature = GetSignature()
 
             };
 
             return condolence;
         }
-
         private async Task<Subject> GetSubjectAsync(Subject subject)
         {
             throw new NotImplementedException();
@@ -97,7 +97,7 @@ namespace CongressionalConsolationGenerator.Services
         }
 
         private Year GetRandomYear()
-        {
+       {
             Array values = Enum.GetValues(typeof(Year));
             Random random = new Random();
             Year year = (Year)values.GetValue(random.Next(values.Length));
@@ -197,5 +197,54 @@ namespace CongressionalConsolationGenerator.Services
 
             return shootingEvent;
         }
+
+        private ThoughtPrayer GetRandomThoughtPrayer()
+        {
+            Array values = Enum.GetValues(typeof(ThoughtPrayer));
+            Random random = new Random();
+            ThoughtPrayer thoughtPrayer = (ThoughtPrayer)values.GetValue(random.Next(values.Length));
+
+            return thoughtPrayer;
+        }
+
+        private SentenceObject GetRandomSentenceObject()
+        {
+            Array values = Enum.GetValues(typeof(SentenceObject));
+            Random random = new Random();
+            SentenceObject sentenceObject = (SentenceObject)values.GetValue(random.Next(values.Length));
+
+            return sentenceObject;
+        }
+
+        private Adjective GetRandomAdjective()
+        {
+            Array values = Enum.GetValues(typeof(Adjective));
+            Random random = new Random();
+            Adjective adjective = (Adjective)values.GetValue(random.Next(values.Length));
+            
+            return adjective;
+        }
+
+        private Heroes GetRandomHeroes()
+        {
+            Array values = Enum.GetValues(typeof(Heroes));
+            Random random = new Random();
+            Heroes heroes = (Heroes)values.GetValue(random.Next(values.Length));
+
+            return heroes;
+        }
+
+        private string GetSignature()
+        {
+
+            string? signature;
+
+                signature = "Ted Cruz";
+            
+
+            return signature;
+        }
+
+
     }
 }

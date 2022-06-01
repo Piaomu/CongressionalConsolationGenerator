@@ -20,7 +20,7 @@ namespace CongressionalConsolationGenerator.Models
         public SentenceObject Sentence2Object { get; set; }
         public Adjective ResponderAdjective { get; set; }
         public Heroes Heroes { get; set; }
-        public string Signature { get; set; }
+        public string? Signature { get; set; }
     }
 
     public enum Subject
@@ -85,7 +85,7 @@ namespace CongressionalConsolationGenerator.Models
         LiftingUp,
         [Display(Name = "praying for")]
         PrayingFor,
-        [Display(Name = "offering thoughts and prayers")]
+        [Display(Name = "offering thoughts and prayers to")]
         OfferingThoughtsAndPrayers,
     }
 
